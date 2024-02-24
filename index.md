@@ -1,3 +1,6 @@
+---
+title: "AI 4 YOU"
+---
 # Welcome to AI 4 YOU
 
 ## Description
