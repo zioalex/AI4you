@@ -16,7 +16,7 @@ You may have heard of the term LLM (Large Language Model) before. It is a type o
 [Ollama](https://github.com/ollama/ollama) is a neat opensource project that allow us to run a large language model on our own computer.
 
 You can find here a lot of opensource models that can be downloaded and used very easily.
-![models](./imgs/ollama_models.png)
+![models](/assets/imgs/ollama_models.png)
 
 ## Requirements
 You do not need any specific hardware to run Ollama. Some memory would help. Surely a GPU will make it faster.
@@ -24,12 +24,13 @@ You do not need any specific hardware to run Ollama. Some memory would help. Sur
 # How to use Ollama
 ## Installation
 It very easy to install Ollama. You can install it on Linux with:
+
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 ## Other OSs
-![Ollama installation](./imgs/ollama_installation.png)
+![Ollama installation](/assets/imgs/ollama_installation.png)
 Just check it here [Ollama Installation](https://ollama.com/download)
 ## Some Examples
 Let's start with something easy.
