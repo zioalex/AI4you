@@ -12,6 +12,7 @@ urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='cdn-lfs-us-1.hugg
 
 During handling of the above exception, another exception occurred:
 
+````bash
 Traceback (most recent call last):
   File "/home/zioalex/.local/bin/huggingface-cli", line 8, in <module>
     sys.exit(main())
@@ -38,7 +39,7 @@ Traceback (most recent call last):
   File "/home/zioalex/.local/lib/python3.8/site-packages/requests/adapters.py", line 532, in send
     raise ReadTimeout(e, request=request)
 requests.exceptions.ReadTimeout: (ReadTimeoutError("HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: a33d910c-84c6-4514-8362-c705e2039d38)')
-
+````
 export HF_HUB_DOWNLOAD_TIMEOUT=30
 huggingface-cli download  w4r10ck/SOLAR-10.7B-Instruct-v1.0-uncensored --local-dir  huggingface_models/ --local-dir-use-symlinks False
 
