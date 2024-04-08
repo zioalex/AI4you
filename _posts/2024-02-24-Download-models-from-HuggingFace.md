@@ -41,7 +41,11 @@ Traceback (most recent call last):
 requests.exceptions.ReadTimeout: (ReadTimeoutError("HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: a33d910c-84c6-4514-8362-c705e2039d38)')
 ````
 export HF_HUB_DOWNLOAD_TIMEOUT=30
-huggingface-cli download  w4r10ck/SOLAR-10.7B-Instruct-v1.0-uncensored --local-dir  huggingface_models/ --local-dir-use-symlinks False
+# TO download all the files in the namespes/repo_id 
+huggingface-cli download  TheBloke/SOLAR-10.7B-Instruct-v1.0-uncensored-GGUF --local-dir  huggingface_models/ --local-dir-use-symlinks False  --resume
+
+# TO download only a specific file in the namespes/repo_id 
+huggingface-cli download  TheBloke/SOLAR-10.7B-Instruct-v1.0-uncensored-GGUF solar-10.7b-instruct-v1.0-uncensored.Q8_0.gguf --local-dir  huggingface_models/ --local-dir-use-symlinks False  --resume
 
 or download it directly with curl
 curl -O  https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q8_0.gguf -L
