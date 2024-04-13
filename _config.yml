@@ -1,8 +1,3 @@
-theme: minima
-title: AI 4 YOU
-author: Zioalex - https://github.com/zioalex
-description: AI with my eyes
-
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your entire site, values
@@ -27,7 +22,7 @@ subtitle                 : ""
 name                     : "Alessandro S."
 description              : "AI with my eyes in an easy way"
 url                      : "https://www.ai4you.sh" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
+baseurl                  : "/" # the subpath of your site, e.g. "/blog"
 repository               : "zioalex/ai4you" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
