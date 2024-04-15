@@ -47,7 +47,7 @@ Let's start with something easy.
 
 - I want to impress my wife! - Write a love song in German
 
-- I want to impress my boss! - Write a business plan for my new project on AI applied to DevOps 
+- I want to impress my boss! - Write a business plan for my new project on AI applied to DevOps
 
 - I want to be a bit philosophical - Just give me 3 reasons why God exists and 3 why he doesn't exists
 
@@ -55,14 +55,14 @@ Let's start with something easy.
 
 # Alternatives to Ollama
 
-- https://lmstudio.ai/
-- https://jan.ai/
+- [LM Studio](https://lmstudio.ai/)
+- [Jan AI](https://jan.ai/)
 
 # Hardware and Software used
 
 PC with Linux Ubuntu 20.04
 CPU: AMD Ryzen 7 3700X 8-Core Processor
-RAM: 16GiB 
+RAM: 16GiB
 GPU: GeForce RTX 2070 SUPER
 
 # Conclusion
@@ -80,5 +80,4 @@ What we have seen here is just an easy example with a small LLM. You need to kno
 
 - [[1hr Talk] Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g) - Andrej Karpathy
 - [Autogen: Ollama integration 🤯 Step by Step Tutorial. Mind-blowing!](https://www.youtube.com/watch?v=UQw04VW60U0) -  Mervin Praison
-
 - [Ollama](https://ollama.com/)
