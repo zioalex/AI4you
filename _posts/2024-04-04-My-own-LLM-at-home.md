@@ -78,5 +78,7 @@ What we have seen here is just an easy example with a small LLM. You need to kno
 
 # References
 
-- [Autogen: Ollama integration 🤯 Step by Step Tutorial. Mind-blowing!](https://www.youtube.com/watch?v=UQw04VW60U0)
-- [[1hr Talk] Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g)
+- [[1hr Talk] Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g) - Andrej Karpathy
+- [Autogen: Ollama integration 🤯 Step by Step Tutorial. Mind-blowing!](https://www.youtube.com/watch?v=UQw04VW60U0) -  Mervin Praison
+
+- [Ollama](https://ollama.com/)
