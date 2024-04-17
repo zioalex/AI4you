@@ -2,6 +2,8 @@
 main:
   - title: "AI4You"
     url: https://www.AI4you.sh/
+  - title: "AI4You Video Blog"
+    url: https://www.youtube.com/channel/UC5phhWArpq-eYn6_J-QPMkw
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
