@@ -1,3 +1,9 @@
+---
+layout: post
+title: My own LLM@Home
+tags: [LLM, ollama]
+categories: [posts, videoblog, demo]
+---
 - [Intro](#intro)
   - [What is Ollama](#what-is-ollama)
   - [Requirements](#requirements)
