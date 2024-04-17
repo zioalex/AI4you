@@ -4,7 +4,7 @@ date: 2024-04-04
 tags: LLM ollama demo
 categories: posts videoblog
 ---
-- [Video](#Video)
+- [Video](#video)
 - [Intro](#intro)
   - [What is Ollama](#what-is-ollama)
   - [Requirements](#requirements)
