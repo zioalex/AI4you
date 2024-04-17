@@ -1,6 +1,6 @@
 ---
-layout: post
 title: "My own LLM@Home"
+date: 2024-04-04
 tags: [LLM, ollama]
 categories: [posts, videoblog, demo]
 ---
