@@ -1,8 +1,8 @@
 ---
 title: "My own LLM@Home"
 date: 2024-04-04
-tags: LLL ollama
-categories: posts videoblog demo
+tags: LLM ollama demo
+categories: posts videoblog
 ---
 
 - [Intro](#intro)
