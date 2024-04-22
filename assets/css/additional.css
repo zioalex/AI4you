@@ -1,13 +1,24 @@
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-image: url('/assets/images/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
+
+/* This works but changes only the eopacity of the copyright text */
+/* .page__footer-copyright {
+    font-family: Arial;
+    font-size: 14px;
     opacity: 0.1;
-  }
+  } */
+
+.page__footer {
+  background-color: #77133769;
+}
