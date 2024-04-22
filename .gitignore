@@ -39,3 +39,4 @@ Thumbs.db
 **/.cache
 **/.py.swp
 **/.git
+Gemfile.lock
