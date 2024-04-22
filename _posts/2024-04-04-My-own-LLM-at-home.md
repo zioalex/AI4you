@@ -19,6 +19,7 @@ categories: posts videoblog
 - [References](#references)
 
 # Video
+
 See the Post's Video blog on [Youtube](https://www.youtube.com/watch?v=D9Au8DpKsQg&t=119s)
 
 # Intro
