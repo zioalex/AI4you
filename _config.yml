@@ -24,8 +24,8 @@ description              : "AI with my eyes in an easy way"
 url                      : "https://www.ai4you.sh" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/" # the subpath of your site, e.g. "/blog"
 repository               : "zioalex/ai4you" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : "/assets/images/logo.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : "/assets/images/logo.jpg" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 breadcrumbs              : true  
@@ -106,10 +106,10 @@ analytics:
 # Site Author
 author:
   name             : "Alessandro S. - AKA Zioalex"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo-zioalex.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am what I am, and that's all that I am."
   location         : "Planet Earth"
-  email            :
+  email            : "zioalex at gmail dot com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -292,3 +292,6 @@ defaults:
       share: true
       related: true
       show_date: true
+
+# My custom field
+copyright: "Alessandro S. - Aka Zioalex"

@@ -30,7 +30,7 @@ You may have heard of the term LLM (Large Language Model) before. It is a type o
 [Ollama](https://github.com/ollama/ollama) is a neat opensource project that allow us to run a large language model on our own computer.
 
 You can find here a lot of opensource models that can be downloaded and used very easily.
-![models](/assets/imgs/ollama_models.png)
+![models](/assets/images/ollama_models.png)
 
 ## Requirements
 
@@ -48,7 +48,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ## Other OSs
 
-![Ollama installation](/assets/imgs/ollama_installation.png)
+![Ollama installation](/assets/images/ollama_installation.png)
 Just check it here [Ollama Installation](https://ollama.com/download)
 
 ## Some Examples
