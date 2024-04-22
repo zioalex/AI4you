@@ -40,3 +40,4 @@ Thumbs.db
 **/.py.swp
 **/.git
 Gemfile.lock
+**/_site
