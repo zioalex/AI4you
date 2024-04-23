@@ -3,8 +3,9 @@ title: "My own LLM@Home"
 date: 2024-04-04
 tags: LLM ollama demo
 categories: posts videoblog
+metadata:
+  video: https://youtu.be/VV7PRLNLCEg
 ---
-- [Video](#video)
 - [Intro](#intro)
   - [What is Ollama](#what-is-ollama)
   - [Requirements](#requirements)
@@ -18,9 +19,6 @@ categories: posts videoblog
 - [What's next](#whats-next)
 - [References](#references)
 
-# Video
-
-See the Post's Video blog on [Youtube](https://www.youtube.com/watch?v=D9Au8DpKsQg&t=119s)
 
 # Intro
 
