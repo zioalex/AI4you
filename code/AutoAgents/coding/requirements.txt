@@ -1,6 +1,0 @@
-nltk
-textblob
-scikit-learn
-selenium
-webdriver_manager
-praw
