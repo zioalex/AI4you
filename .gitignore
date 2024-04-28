@@ -41,3 +41,12 @@ Thumbs.db
 **/.git
 Gemfile.lock
 **/_site
+
+# Ignore all .venv files #
+
+.venv_*
+
+# Explicitly ignoer _ignored files #
+coding_generated_ignored
+logs.db
+example3_logs.db
