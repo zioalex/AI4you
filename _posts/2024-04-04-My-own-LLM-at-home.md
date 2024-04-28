@@ -5,6 +5,9 @@ tags: LLM ollama demo
 categories: posts videoblog
 metadata:
   video: https://youtu.be/VV7PRLNLCEg
+header:
+  teaser: "/assets/images/ollama_teaser.png"
+
 ---
 - [Intro](#intro)
   - [What is Ollama](#what-is-ollama)
