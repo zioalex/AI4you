@@ -50,3 +50,5 @@ Gemfile.lock
 coding_generated_ignored
 logs.db
 example3_logs.db
+
+**/on_hold
