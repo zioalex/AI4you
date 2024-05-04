@@ -44,10 +44,19 @@ Pyautogen requires an openAI RestApi endpoint to work. It works therefore with O
 ### Installation
 Create a simple [Python Virtual Environment](#python-virtual-environment) and install the required packages:
 
+<details>
+<summary>
+Click to expand!
+
 ```bash
 python3 -mvenv .venv_autogen      # Create a virtual environment  
 source -venv_autogen/bin/activate # Activate the virtual environment
 pip install pyautogen             # This install all the required packages
+...
+```
+</summary>
+
+```bash
 
 Collecting pyautogen
   Downloading pyautogen-0.2.26-py3-none-any.whl (264 kB)
@@ -71,6 +80,7 @@ Collecting h11<0.15,>=0.13
 Installing collected packages: numpy, typing-extensions, pydantic-core, annotated-types, pydantic, regex, idna, certifi, charset-normalizer, urllib3, requests, tiktoken, packaging, docker, tqdm, sniffio, exceptiongroup, anyio, h11, httpcore, httpx, distro, openai, python-dotenv, termcolor, flaml, diskcache, pyautogen
 Successfully installed annotated-types-0.6.0 anyio-4.3.0 certifi-2024.2.2 charset-normalizer-3.3.2 diskcache-5.6.3 distro-1.9.0 docker-7.0.0 exceptiongroup-1.2.1 flaml-2.1.2 h11-0.14.0 httpcore-1.0.5 httpx-0.27.0 idna-3.7 numpy-1.24.4 openai-1.20.0 packaging-24.0 pyautogen-0.2.26 pydantic-2.7.1 pydantic-core-2.18.2 python-dotenv-1.0.1 regex-2024.4.16 requests-2.31.0 sniffio-1.3.1 termcolor-2.4.0 tiktoken-0.6.0 tqdm-4.66.2 typing-extensions-4.11.0 urllib3-2.2.1
 ```
+</details>
 
 ### Run the agents
 #### First example
@@ -140,10 +150,16 @@ See the code of the example in the file [example2.py](/assets/code/pyautogen/exa
 
 This is what I got after a couple of tries:
 
+<details>
+<summary>Click to expand!
+
 ```python
 import os
 import subprocess
+```
+</summary>
 
+```python
 def get_file_md5(filename):
     try:
         md5 = subprocess.check_output(['md5sum', '--quiet', filename]).decode().strip()
@@ -212,6 +228,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+</details>
 
 Reference code is from [here](/assets/code/pyautogen/coding/example2_generated_code.py)
 
@@ -229,11 +246,17 @@ As part of the code generation and test process the script can also try to invok
 
 The result of the execution is:
 
+<details>
+<summary>Click to expand!
+
 ```python
 import subprocess
 import hashlib
 import os
+```
+</summary>
 
+```python
 def get_installed_packages():
     return subprocess.check_output(['dpkg', '--list']).decode().splitlines()
 
@@ -288,6 +311,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+</details>
 
 That looks good but it still broken.
 Reference code is from [here](/assets/code/pyautogen/coding/example3_generated_code_v2.py)
