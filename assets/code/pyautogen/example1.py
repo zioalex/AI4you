@@ -28,8 +28,9 @@ assistant = autogen.AssistantAgent(
 user_proxy = autogen.UserProxyAgent(
     "user_proxy",
     code_execution_config = {
-        "work_dir" : "coding"
-    }
+        "work_dir" : "coding",
+        "use_docker": False
+    },
 )
 
 # Start a chat with the assistant

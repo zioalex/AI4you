@@ -89,7 +89,9 @@ Successfully installed annotated-types-0.6.0 anyio-4.3.0 certifi-2024.2.2 charse
 
 ### Run the agents
 #### First example
-You **do not need** to run the model in Ollama with but just to have it installed. Ollama will load and run the model for you.
+In this example I'll run 1 LLM with human interaction.
+
+You **do not need** to start the model in Ollama but you have to pre-pull the model. Ollama will load and run the model for you.
 In this example the human is in the loop and can provide feedback to the assistant to better shape the answer.
 You can see the code of the fist example here [example1.py](/assets/code/pyautogen/example1.py)
 
@@ -243,7 +245,7 @@ That is not yet quite right but it is a starting point. What I see as difficult 
 
 What I noted is that the agent is remembering the previous conversation and is using it to generate the next one. This is a good feature that can be used to improve the conversation but I didn't yet found a good way to control it.
 
-### Third example
+#### Third example
 
 The third and last example I am going to use 2 different LLMs to do the given task. In this case the Coder will use the latest model LLAMA3 from Meta while the user proxy will use the same LLM as before, the Mistral model. The code is in the file [example3.py](/assets/code/pyautogen/example3.py)
 
@@ -367,6 +369,24 @@ At then end of this example you can see something like this:
 ```
 
 This is the cost of the execution. You can see that the Mistral model is used for 1609 tokens while the LLAMA3 model is used for 8045 tokens. This is a good way to keep track of the cost of the execution in case you are using a paid service like OpenAI.
+
+## Interesing feature
+
+The agent remembers the previous conversation and uses it to generate the next one.
+It does it writing the data on an sqlite3 DB.
+
+I found this in the example execution dir in the folder .cache:
+
+```bash
+.cache/
+.cache/41
+.cache/41/cache.db
+.cache/41/d0
+.cache/41/d0/09
+.cache/41/d0/09/eae1c54bec01b87feec7ea1a2152.val
+```
+
+If you want to get rid of its memory remove the cache.db file or update the task.
 
 ## Alternatives
 
