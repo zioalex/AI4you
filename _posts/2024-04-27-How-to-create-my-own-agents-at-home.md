@@ -4,7 +4,7 @@ date: 2024-04-04
 tags: LLM ollama demo agents
 categories: posts 
 metadata:
-  # video: ""
+  video: "https://youtu.be/m3qBTeLBkkc"
 classes: wide
 header:
   teaser: "/assets/images/agents_with_pyautogen_teaser.jpeg"
