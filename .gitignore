@@ -44,10 +44,12 @@ Gemfile.lock
 
 # Ignore all .venv files #
 
-.venv_*
+**/.venv_*
+**/.venv
 
 # Explicitly ignoer _ignored files #
 coding_generated_ignored
 logs.db
 example3_logs.db
 **/on_hold
+**/.secrets
