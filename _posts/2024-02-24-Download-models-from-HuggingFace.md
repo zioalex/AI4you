@@ -49,3 +49,22 @@ huggingface-cli download  TheBloke/SOLAR-10.7B-Instruct-v1.0-uncensored-GGUF sol
 
 or download it directly with curl
 curl -O  https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q8_0.gguf -L
+
+And then you have to create the model in ollama manually
+
+vi gemma-7b.modelfile 
+#FROM /home/s0vp8h/.ollama/models/blobs/sha256:b1f4aabd3db466eb1c8ff792efa7647cf02e56202574b9cdd555c2df32d5af43
+FROM /mnt/data/s0vp8h/huggingface_models/gemma-7b.gguf
+#TEMPLATE """[INST] {{ .Prompt }} [/INST]"""
+
+TEMPLATE """[INST] {{ if .System }}<<SYS>>{{ .System }}<</SYS>>
+
+{{ end }}{{ .Prompt }} [/INST] """
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+PARAMETER stop "<<SYS>>"
+PARAMETER stop "<</SYS>>"
+
+And then you need to create the model in ollama with
+ollama create gemma7b -f gemma-7b.modelfile
+
