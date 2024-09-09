@@ -46,6 +46,7 @@ Gemfile.lock
 
 **/.venv_*
 **/.venv
+**/*_venv
 
 # Explicitly ignoer _ignored files #
 coding_generated_ignored
@@ -53,3 +54,4 @@ logs.db
 example3_logs.db
 **/on_hold
 **/.secrets
+assets/code/puzzle_missing_piece/.envrc

@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "minimal-mistakes",
+			"path": "../../../../minimal-mistakes"
+		},
+		{
+			"name": "understanding_neural_networks",
+			"path": "../../../../understanding_neural_networks"
+		},
+		{
+			"name": "Medium-Python-Neural-Network",
+			"path": "../../../../Medium-Python-Neural-Network"
+		}
+	],
+	"settings": {}
+}

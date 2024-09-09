@@ -1,1 +1,5 @@
 replicate
+torch
+diffusers
+transformers
+accelerate
