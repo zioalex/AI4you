@@ -49,8 +49,8 @@ az ad sp create-for-rbac --name ml-sa-experiment-sp --sdk-auth
 
 export AZURE_CLIENT_ID=DUMMY_CLIENT_ID
 export AZURE_CLIENT_SECRET=DUMMY_CLIENT_SECRET
-export AZURE_TENANT_ID=88d74ba7-d9b6-40fc-abea-8f80aa5cedf1
-export AZURE_SUBSCRIPTION_ID=f5bc5a63-92f8-4ab6-ad94-84673eeebb56
+export AZURE_TENANT_ID=DUMMY_TENANT_ID
+export AZURE_SUBSCRIPTION_ID=DUMMY_SUBSCRIPTION_ID
 
 export AZCOPY_SPA_CLIENT_SECRET=$AZURE_CLIENT_SECRET
 azcopy login --service-principal --application-id $AZURE_CLIENT_ID --tenant-id $AZURE_TENANT_ID # Doesn't work
