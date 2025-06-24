@@ -7,6 +7,9 @@ https://huggingface.co/settings/tokens
   _Your token has been saved to /home/zioalex/.cache/huggingface/token
                                                                                                                                                                                                                                                                                       ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 huggingface-cli download TheBloke/Mistral-7B-Instruct-v0.2-GGUF mistral-7b-instruct-v0.2.Q8_0.gguf --local-dir  huggingface_models/ --local-dir-use-symlinks False
+
+huggingface-cli download --cache-dir /mnt/data/huggingface_models cogito:8b
+
 # This fails because of the 10 secs timeout. The proxy can be a bit slow
 urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out. (read timeout=10)
 
@@ -50,7 +53,90 @@ huggingface-cli download  TheBloke/SOLAR-10.7B-Instruct-v1.0-uncensored-GGUF sol
 or download it directly with curl
 curl -O  https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q8_0.gguf -L
 
-And then you have to create the model in ollama manually
+
+# Or you can download the model that you want and then convert it to GGUF format with
+## Clone the llama.cpp repo and install the requirements
+
+
+```bash
+    git clone https://github.com/ggml-org/llama.cpp.git
+    cd llama.cpp
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+```
+
+## Create the GGUF file from the HuggingFace model
+```bash
+    (.venv) opensource/llama.cpp (master) $ python3 convert_hf_to_gguf.py   /mnt/data/huggingface_models/models--deepcogito--cogito-v1-preview-llama-8B/snapshots/64c42369b3f322fbffb277bfff146551dd2823cc/   --outfile /mnt/data/ollama/cogito-v1-preview-llama-8B_f16.gguf   --outtype f16
+```
+
+ollama create  cogito8b -f cogito-v1-preview-llama-8B_f16.modelfile
+
+Create the modelfile for ollama
+```bash
+cogito-v1-preview-llama-8B_f16.modelfile 
+FROM  /mnt/data/ollama/cogito-v1-preview-llama-8B_f16.gguf
+
+TEMPLATE """ {{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>
+{{- if .System }}
+
+{{ .System }}
+{{- end }}
+{{- if .Tools }}
+
+Available Tools:
+{{ range $.Tools }}{{- . }}
+{{ end }}
+{{ end }}<|eot_id|>
+{{- end }}
+{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1 }}
+{{- if eq .Role "user" }}<|start_header_id|>user<|end_header_id|>
+
+{{ .Content }}<|eot_id|>{{ if $last }}<|start_header_id|>assistant<|end_header_id|>
+
+{{ end }}
+{{- else if eq .Role "assistant" }}<|start_header_id|>assistant<|end_header_id|>
+{{- if .ToolCalls }}
+{{ range .ToolCalls }}
+<tool_call>
+{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
+</tool_call>{{ end }}
+{{- else }}
+
+{{ .Content }}
+{{- end }}{{ if not $last }}<|eot_id|>{{ end }}
+{{- else if eq .Role "tool" }}<|start_header_id|>ipython<|end_header_id|>
+
+{"content": "{{ .Content }}"}<|eot_id|>{{ if $last }}<|start_header_id|>assistant<|end_header_id|>
+
+{{ end }}
+{{- end }}
+{{- end }}"""
+
+# tell Ollama where each conversation block ends
+PARAMETER stop "<|start_header_id|>"
+PARAMETER stop "<|end_header_id|>"
+PARAMETER stop "<|eot_id|>"
+
+# (optional) tweak runtime behaviour
+PARAMETER temperature 0.7
+```
+
+## Run the reasoning model
+```bash
+ollama run cogito8b
+```
+
+## Enable reasoning
+```bash
+# in Ollama
+/set system """Enable deep thinking subroutine."""
+```
+
+## Old gemma code
+# And then you have to create the model in ollama manually
 
 vi gemma-7b.modelfile 
 #FROM /home/s0vp8h/.ollama/models/blobs/sha256:b1f4aabd3db466eb1c8ff792efa7647cf02e56202574b9cdd555c2df32d5af43
