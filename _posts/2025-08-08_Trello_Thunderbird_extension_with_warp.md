@@ -6,7 +6,7 @@ backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.svg')
 ---
 
-# Building a Thunderbird-Trello Extension: Manual vs. Warp AI Development
+# Building a Thunderbird-Trello Integration Extension: Manual vs. Warp AI Development
 
 ### Transform 8 Hours of Coding into 15 Minutes
 
@@ -23,7 +23,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 - Secure API integration
 - GitHub Actions CI/CD
 - Automated testing
-- Professional packaging
+- Extension packaging
 
 **Question:** How long would this take you?
 
@@ -701,13 +701,13 @@ Free trial includes unlimited AI agent usage!
 ## Questions?
 
 ### Connect & Learn More:
-- 🌐 Website: [warp.dev](https://warp.dev)
-- 📺 YouTube: @AI4You
-- 💻 GitHub: [github.com/warpdotdev](https://github.com/warpdotdev)
-- 🐦 Twitter: @warpdotdev
+- 🌐 Website: [AI4You](https://ai4you.sh)
+- 📺 YouTube: [@AI4You](https://www.youtube.com/@AI4You-cj8mu)
+- 💻 GitHub: [Zioalex Home](https://github.com/zioalex/AI4you/)
+- 🔵 BlueSky: [@ai4you-sh.bsky.social](https://bsky.app/profile/ai4you-sh.bsky.social)
+- 🐦 (e)X / Twitter: [@ai4you_sh](https://x.com/ai4you_sh)
 
 ### Today's Code:
-- Example repo: `github.com/yourusername/thunderbird-trello`
-- Blog post: `ai4you.sh/warp-vs-manual`
+- Example repo: [Thunderbird Trello Integration](https://github.com/zioalex/thunderbird-trello-integration)
 
 **Happy coding with Warp!** ✨
