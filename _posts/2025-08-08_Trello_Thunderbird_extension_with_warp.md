@@ -66,6 +66,15 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 
 ---
 
+# Time to first Trello Task
+
+Started: 2025-07-29 16:18:52
+First task in Trello: 2025-07-29 16:42:00
+Total time: ~23 minutes
+![First Trello Task](/assets/images/first_trello_task.png)
+
+---
+
 # The Learning Curve Challenge
 
 ## 🐍 Python Developer's JavaScript Struggles
