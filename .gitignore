@@ -54,3 +54,4 @@ example3_logs.db
 **/.*venv
 **/.envrc
 **/.secrets
+ai4you.sh.txt
