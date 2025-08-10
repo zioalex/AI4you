@@ -1,0 +1,5 @@
+# This file contains settings that are only used for the production build.
+# It is merged with _config.yml during the GitHub Actions workflow.
+
+url: "https://www.ai4you.sh"
+baseurl: "/"
