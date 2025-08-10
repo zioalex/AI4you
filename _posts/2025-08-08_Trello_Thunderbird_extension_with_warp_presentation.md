@@ -319,7 +319,7 @@ You can see results immediately, which means:
 
 # Thank You!
 
-🔗 Explore Blusky at [blusky.dev](https://blusky.dev)
+🔗 Explore Bluesky at [bluesky.dev](https://bluesky.dev)
 📺 Watch Python→JS tutorials at @AI4You
 💻 Example code: github.com/ai4you/python-to-js-examples
 🌐 Download at [warp.dev](https://warp.dev)
