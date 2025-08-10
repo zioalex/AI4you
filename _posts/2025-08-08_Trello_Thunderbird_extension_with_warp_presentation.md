@@ -6,11 +6,12 @@ backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.svg')
 ---
 
-# Building a Thunderbird-Trello Integration Extension: Manual vs. Warp AI Development
+# Building a Thunderbird-Trello Integration Extension: 
+## Manual vs. Warp agentic Development
 
-### A Python Developer's Journey into JavaScript Extension Development
+A Python Developer's Journey into JavaScript Extension Development
 
-**From 3 Days of Learning + Coding to 15 Minutes with AI**
+**From 5 Days of Learning + Coding to 23 Minutes with AI**
 
 ---
 
@@ -70,7 +71,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 
 # Warp Development Timeline
 
-## AI-Powered Approach: ~15-20 Minutes
+## AI-Powered Approach: ~20* Minutes + CI/CD Setup
 
 - **Describe requirements in plain English**: 5-10 minutes
 - **Review generated structure**: 5-10 minutes
@@ -163,13 +164,12 @@ npm install --save-dev...  # What do I need? Research time!
 **John's Mental State During Manual Development:**
 
 - Hour 0: "Why should I do it manually?"
+- Hour 1: "Can I write it in Python?"
+- Hour 2: "Is JS something where I want to invest time?"
+- Hour 3: "Nope, this is not for me"
+- Hour 4: "Give up!"
 
-- Hour 1: "This can't be that different from Python"
-- Hour 4: "Why is everything undefined?"
-- Hour 8: "I should have learned JavaScript properly"
-- Hour 16: "Is it too late to switch careers?"
-- Hour 24: "Finally something works!"
-- Hour 32: "Never doing this again"
+**Confidence Level: 📉 DECREASED**
 
 ---
 
@@ -178,9 +178,13 @@ npm install --save-dev...  # What do I need? Research time!
 **John's Mental State with Warp:**
 
 - Minute 1: "Let me describe what I need"
-- Minute 5: "Oh, that's how it works in JS"
+- Minute 5: "Cool, it's working :-O"
 - Minute 10: "This is actually making sense"
 - Minute 20: "I can focus on the logic, not syntax"
+- Minute 30: "Let me add more features"
+- Minute 60: "+ Other features"
+- Minute 120: "Let me publish this experiment project"
+- Minute 180: "Create the CI/CD pipeline for release"
 
 **Confidence Level: 📈 GROWING**
 
@@ -226,7 +230,7 @@ npm install --save-dev...  # What do I need? Research time!
 🎉 Working extension + New skills!
 ```
 
-**Result**: Productive and learning
+**Result**: Productive and learning, if you want to
 
 ---
 
@@ -235,7 +239,7 @@ npm install --save-dev...  # What do I need? Research time!
 
 ## Q: "Will Warp make me lazy?"
 
-**A**: No! It makes you productive. You learn by seeing quality code, not by struggling with syntax errors for hours.
+**A**: Yes and no! It accelerates the development process by providing instant feedback and examples, but you still need to understand the underlying concepts.
 
 ## Q: "Can it really understand Python context?"
 
@@ -243,17 +247,18 @@ npm install --save-dev...  # What do I need? Research time!
 
 ## Q: "What if I want to learn JS properly?"
 
-**A**: Warp is the best teacher - you see correct patterns immediately and can ask for explanations.
+**A**: You can still learn! Warp helps you focus on logic first, then you can dive deeper into JavaScript concepts as needed.
 
-## Q: "Is the generated code Pythonic JS?"
+## Q: "I don't need to learn JS, I just want to build this extension."
 
-**A**: No, it's proper JavaScript following JS best practices, but with explanations in Python terms.
+**A**: Exactly! Warp allows you to build without getting bogged down in JavaScript details. You can always learn later if you want.
+
 
 ---
 
 # The Multiplier Effect
 
-## How Warp Amplifies Python Developer Capabilities
+## How Warp Amplifies Python Developer Capabilities and your productivity
 
 You can see results immediately, which means:
 

@@ -55,3 +55,4 @@ example3_logs.db
 **/.envrc
 **/.secrets
 ai4you.sh.txt
+vendor/bundle

@@ -1,14 +1,79 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
-search: false
 ---
 
 @charset "utf-8";
-$footer-background-color: #77133769;
-// $background-color: #000;;
-// $primary-color: #77133769;
 
+/* ==========================================================================
+   Custom Variable Overrides
+   ========================================================================== */
+
+/* Typography customizations from your old setup */
+$doc-font-size: 16 !default;
+
+/* Type scale customizations */
+$type-size-1: 2.441em !default; // ~39.056px
+$type-size-2: 1.953em !default; // ~31.248px
+$type-size-3: 1.563em !default; // ~25.008px
+$type-size-4: 1.25em !default; // ~20px
+$type-size-5: 1em !default; // ~16px
+$type-size-6: 0.75em !default; // ~12px
+$type-size-7: 0.6875em !default; // ~11px
+$type-size-8: 0.625em !default; // ~10px
+
+/* Headline scale customizations */
+$h-size-1: 1.563em !default; // ~25.008px
+$h-size-2: 1.25em !default; // ~20px
+$h-size-3: 1.125em !default; // ~18px
+$h-size-4: 1.0625em !default; // ~17px
+$h-size-5: 1.03125em !default; // ~16.5px
+$h-size-6: 1em !default; // ~16px
+
+/* Breakpoints customizations */
+$small: 600px !default;
+$medium: 768px !default;
+$medium-wide: 900px !default;
+$large: 1024px !default;
+$x-large: 1440px !default; // Your custom value (different from default 1280px)
+$max-width: $x-large !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
-@import "additional.css";
+
+/* ==========================================================================
+   Custom Overrides
+   ========================================================================== */
+
+/* 1. Style the teaser image and ensure it starts on a new line */
+.archive__item-teaser {
+  float: left;
+  margin-right: 1em; /* space between image and text */
+  clear: both; /* This is the key: forces each new teaser to a new line */
+  
+  img {
+    width: 140px; // Your custom size
+    vertical-align: top; /* Important for consistent alignment */
+  }
+}
+
+/* 2. Make the article content wrap correctly and add spacing */
+.archive__item {
+  overflow: auto; /* This contains the floated child and makes the text wrap */
+  padding-bottom: 2em; /* Adds space between each post entry */
+  
+  h2.archive__item-title {
+    margin-top: 0; /* Align title with the top of the image */
+  }
+}
+
+/* 4. Add a clearfix to the container of each post entry */
+/* This ensures each post entry is cleared properly before the next one starts.
+   Minimal Mistakes often wraps posts in a div. This targets it. */
+.archive__item-teaser + .archive__item {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
