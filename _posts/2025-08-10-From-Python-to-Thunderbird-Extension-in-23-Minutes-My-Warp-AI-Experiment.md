@@ -11,8 +11,6 @@ header:
 #  teaser: "/assets/images/agents_with_pyautogen_teaser.jpeg"
 ---
 
-# From Python to Thunderbird Extension in 23 Minutes: My Warp AI Experiment
-
 *How I went from JavaScript-avoider to shipping a Thunderbird-Trello integration in a longer coffee break*
 
 ---
