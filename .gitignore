@@ -51,3 +51,8 @@ coding_generated_ignored
 logs.db
 example3_logs.db
 **/on_hold
+**/.*venv
+**/.envrc
+**/.secrets
+ai4you.sh.txt
+vendor/bundle
