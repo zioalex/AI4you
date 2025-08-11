@@ -223,11 +223,15 @@ npm install --save-dev...  # What do I need? Research time!
      ↓
 🧠 Understand patterns from examples
      ↓
-🔧 Modify with confidence
+🔧 Modify when it doesn't work
      ↓
 📚 Learn JS concepts as needed
      ↓
+🧪 Create tests and fix them when AI cannot
+     ↓
 🎉 Working extension + New skills!
+    ↓
+🚀 Publish and iterate
 ```
 
 **Result**: Productive and learning, if you want to
@@ -264,7 +268,7 @@ You can see results immediately, which means:
 
 - **Faster feedback loop**: No waiting for days to see if your code works
 - **More iterations**: Try different approaches quickly
-- **Higher quality**: AI-generated code *tends* to follow best practices
+- **Higher quality**: if compared to a newbie
 - **Less frustration**: Focus on logic, not syntax
 
 ---
@@ -319,7 +323,9 @@ You can see results immediately, which means:
 
 # Thank You!
 
-🔗 Explore Bluesky at [bluesky.dev](https://bluesky.dev)
-📺 Watch Python→JS tutorials at @AI4You
-💻 Example code: github.com/ai4you/python-to-js-examples
-🌐 Download at [warp.dev](https://warp.dev)
+- 🌐 **Warp**: [warp.dev](https://warp.dev)
+- 📺 **Video walkthrough**: [YouTube - @AI4You-cj8mu](https://youtube.com/@AI4You-cj8mu)
+- 💻 **Source code**: https://github.com/zioalex/thunderbird-trello-integration/
+- 📝 **My blog**: [ai4you.sh](https://ai4you.sh)
+- 🦋 **Give me your feedback on Bluesky**: [bsky.dev](https://bsky.app/profile/ai4you-sh.bsky.social) @ai4you-sh
+- **Give me your feedback on X**: [x.com](https://x.com/ai4you_sh) @ai4you_sh
