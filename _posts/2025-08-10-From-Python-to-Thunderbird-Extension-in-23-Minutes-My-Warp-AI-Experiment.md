@@ -5,7 +5,7 @@ tags: Warp, Python Developer, JavaScript, Thunderbird, Extension, AI, Productivi
 description: "How I went from JavaScript-avoider to shipping a Thunderbird-Trello integration in a longer coffee break. A Python developer's journey into JavaScript extension development with Warp AI."
 categories: posts 
 metadata:
-  video: "https://youtu.be/AI4You"
+  video: "https://youtu.be/tQ4lJvcLFuI?si=-eG-U4nMlYtZgmXr"
 classes: wide
 header:
 #  teaser: "/assets/images/agents_with_pyautogen_teaser.jpeg"
