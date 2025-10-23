@@ -860,7 +860,7 @@ When an LLM generates plausible-sounding but false information. Agents can hallu
 **Questions? Found a bug? Have a suggestion?** 
 
 🦋 Give me your feedback on Bluesky: [bsky.app](https://bsky.app/profile/ai4you-sh.bsky.social)
-Give me your feedback on X: [x.com](https://x.com/ai4you_sh)
+🐦 Give me your feedback on X: [x.com](https://x.com/ai4you_sh)
  or reach out on [GitHub](https://github.com/zioalex/Agents_unplugged_for_real_no_magic_no_fuss)!
 
 Happy agent building! 🤖
