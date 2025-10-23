@@ -1,0 +1,149 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1a1a1a">
+    LangChain vs LangGraph
+  </text>
+  
+  <!-- LangChain Section -->
+  <g id="langchain">
+    <!-- Section background -->
+    <rect x="20" y="60" width="360" height="520" fill="#e8f4fd" stroke="#2196F3" stroke-width="2" rx="10"/>
+    
+    <!-- Title -->
+    <text x="200" y="90" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#2196F3">
+      LangChain
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="200" y="115" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">
+      Linear Chain Architecture
+    </text>
+    
+    <!-- Chain visualization -->
+    <g transform="translate(200, 160)">
+      <!-- Node 1: Prompt -->
+      <rect x="-60" y="0" width="120" height="40" fill="#4CAF50" rx="5"/>
+      <text x="0" y="25" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Prompt</text>
+      
+      <!-- Arrow -->
+      <path d="M 0 45 L 0 65" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Node 2: LLM -->
+      <rect x="-60" y="70" width="120" height="40" fill="#2196F3" rx="5"/>
+      <text x="0" y="95" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">LLM</text>
+      
+      <!-- Arrow -->
+      <path d="M 0 115 L 0 135" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Node 3: Tool -->
+      <rect x="-60" y="140" width="120" height="40" fill="#FF9800" rx="5"/>
+      <text x="0" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Tool/Function</text>
+      
+      <!-- Arrow -->
+      <path d="M 0 185 L 0 205" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Node 4: Output -->
+      <rect x="-60" y="210" width="120" height="40" fill="#9C27B0" rx="5"/>
+      <text x="0" y="235" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Output</text>
+    </g>
+    
+    <!-- Features -->
+    <text x="40" y="440" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Key Features:</text>
+    <text x="40" y="465" font-family="Arial, sans-serif" font-size="13" fill="#666">• Sequential execution</text>
+    <text x="40" y="490" font-family="Arial, sans-serif" font-size="13" fill="#666">• Simple prompt chains</text>
+    <text x="40" y="515" font-family="Arial, sans-serif" font-size="13" fill="#666">• Stateless between calls</text>
+    <text x="40" y="540" font-family="Arial, sans-serif" font-size="13" fill="#666">• Good for linear workflows</text>
+    <text x="40" y="565" font-family="Arial, sans-serif" font-size="13" fill="#666">• Easy to get started</text>
+  </g>
+  
+  <!-- LangGraph Section -->
+  <g id="langgraph">
+    <!-- Section background -->
+    <rect x="420" y="60" width="360" height="520" fill="#f0e8ff" stroke="#9C27B0" stroke-width="2" rx="10"/>
+    
+    <!-- Title -->
+    <text x="600" y="90" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#9C27B0">
+      LangGraph
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="600" y="115" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">
+      Graph-based Architecture
+    </text>
+    
+    <!-- Graph visualization -->
+    <g transform="translate(600, 260)">
+      <!-- Central State node -->
+      <circle cx="0" cy="0" r="35" fill="#673AB7"/>
+      <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">State</text>
+      
+      <!-- Node 1: Start -->
+      <circle cx="-100" cy="-80" r="30" fill="#4CAF50"/>
+      <text x="-100" y="-75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="white">Start</text>
+      
+      <!-- Node 2: Agent -->
+      <circle cx="100" cy="-80" r="30" fill="#2196F3"/>
+      <text x="100" y="-75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="white">Agent</text>
+      
+      <!-- Node 3: Tool -->
+      <circle cx="100" cy="80" r="30" fill="#FF9800"/>
+      <text x="100" y="85" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="white">Tool</text>
+      
+      <!-- Node 4: Decision -->
+      <rect x="-130" y="50" width="60" height="60" fill="#f44336" transform="rotate(45 -100 80)"/>
+      <text x="-100" y="85" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">Check</text>
+      
+      <!-- Edges with arrows -->
+      <!-- Start to State -->
+      <path d="M -70 -60 L -30 -25" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- State to Agent (outgoing) -->
+      <path d="M 30 -20 L 70 -55" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Agent BACK to State (curved return arrow) -->
+      <path d="M 75 -55 Q 45 -15 30 -5" stroke="#2196F3" stroke-width="2.4" fill="none" marker-end="url(#arrowhead-blue)" opacity="0.8"/>
+      
+      <!-- State to Tool (outgoing) -->
+      <path d="M 30 20 L 70 55" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Tool BACK to State (curved return arrow) -->
+      <path d="M 75 55 Q 45 15 30 5" stroke="#FF9800" stroke-width="2.4" fill="none" marker-end="url(#arrowhead-orange)" opacity="0.8"/>
+      
+      <!-- State to Check (outgoing) -->
+      <path d="M -30 20 L -70 55" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+      
+      <!-- Check BACK to State (curved return arrow) -->
+      <path d="M -75 55 Q -45 15 -30 5" stroke="#f44336" stroke-width="2.4" fill="none" marker-end="url(#arrowhead-red)" opacity="0.8"/>
+      
+      <!-- Cycle indicator text -->
+      <text x="0" y="-60" font-family="Arial, sans-serif" font-size="12" fill="#673AB7" font-weight="bold">Stateful Cycles</text>
+    </g>
+    
+    <!-- Features -->
+    <text x="440" y="440" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Key Features:</text>
+    <text x="440" y="465" font-family="Arial, sans-serif" font-size="13" fill="#666">• Stateful execution</text>
+    <text x="440" y="490" font-family="Arial, sans-serif" font-size="13" fill="#666">• Cycles and branching</text>
+    <text x="440" y="515" font-family="Arial, sans-serif" font-size="13" fill="#666">• Conditional logic</text>
+    <text x="440" y="540" font-family="Arial, sans-serif" font-size="13" fill="#666">• Multi-agent support</text>
+    <text x="440" y="565" font-family="Arial, sans-serif" font-size="13" fill="#666">• Complex workflows</text>
+  </g>
+  
+  <!-- Arrow markers definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#2196F3"/>
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#FF9800"/>
+    </marker>
+    <marker id="arrowhead-red" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#f44336"/>
+    </marker>
+  </defs>
+</svg>
