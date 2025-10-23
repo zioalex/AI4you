@@ -22,6 +22,8 @@ en: &DEFAULT_EN
   meta_label                 :
   tags_label                 : "Tags:"
   categories_label           : "Categories:"
+  target_audience_label      : "Target Audience:"
+  complexity_label           : "Complexity:"
   date_label                 : "Updated:"
   comments_label             : "Leave a comment"
   comments_title             : "Comments"

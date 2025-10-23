@@ -1,0 +1,6 @@
+{% if page.target_audience %}
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-users" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].target_audience_label | default: "Target Audience:" }} </strong>
+    <span itemprop="target_audience">{{ page.target_audience }}</span>
+  </p>
+{% endif %}
