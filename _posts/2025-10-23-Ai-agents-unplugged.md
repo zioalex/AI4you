@@ -3,12 +3,20 @@ title: "AI Agents Unplugged: For Real, No Magic, No Fuss"
 date: 2025-10-23
 author: Alessandro S.
 tags: [AI, Agents, LangChain, LangFlow, MCP, Tutorial, Python]
-category: Advanced
+categories: posts
 description: "A practical, hands-on guide to building AI agents with LangChain, LangFlow, and MCP. No magic, no hype—just real code and honest insights about what works (and what doesn't)."
 featured_image: "/assets/images/agentic_frameworks_wordcloud.png"
 video_url: "https://www.youtube.com/@AI4You-cj8mu"
 estimated_reading_time: "15 minutes"
-target_level: "Advanced"
+target_audience: "Python developers and AI enthusiasts"
+complexity: advanced
+toc: true
+toc_label: "Contents"
+toc_icon: "list"
+toc_sticky: true
+toc_max: 2
+header:
+  teaser: "/assets/images/ai-agents-unplugged-225x225.png"
 ---
 
 # AI Agents Unplugged: Building Real Agents Without the Hype
@@ -127,17 +135,29 @@ This is the most flexible pattern. You define a **graph** where:
 - **Edges** represent routing logic
 - **State** flows through the graph
 
-```mermaid
+<div class="mermaid">
 graph LR
-    A[Start] --> B{Need Math?}
-    B -->|Yes| C[Calculator Agent]
-    B -->|No| D[Retrieval Agent]
-    C --> E[Format Answer]
+    A[START] --> B{route question}
+    B -->|Contains math/CHF| C[calc_node]
+    B -->|Otherwise| D[retrieve_node]
+    C --> E[answer_node]
     D --> E
-    E --> F{Human Review?}
-    F -->|Approve| G[Done]
-    F -->|Reject| A
-```
+    E --> H[human_review]
+    H --> I{route_feedback}
+    I -->|reject| D
+    I -->|accept| F[END]
+
+    %% Styling (optional)
+    classDef calc fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    classDef retv fill:#ccf,stroke:#333,stroke-width:2px,color:#000
+    classDef ans  fill:#cfc,stroke:#333,stroke-width:2px,color:#000
+    classDef human fill:#ffc,stroke:#333,stroke-width:2px,color:#000
+
+    class C calc
+    class D retv
+    class E ans
+    class H human
+</div>
 
 **Best for:** Complex workflows with conditional logic, human-in-the-loop, or multi-agent collaboration.
 
@@ -265,10 +285,11 @@ if __name__ == "__main__":
 
 Then in your agent code, you connect to the MCP server instead of giving the agent direct access to dangerous functions.
 
-![GitHub MCP Servers](/assets/images/github_mcp_servers.png)
-*The MCP ecosystem is growing fast—check out these community servers!*
 
 ## Risks and Guardrails: The Reality Check
+
+![GitHub MCP Servers](/assets/images/github_mcp_servers.png)
+*The MCP ecosystem is growing fast—check out these community servers!*
 
 Let's talk honestly about the risks of AI agents. This is the part that marketing materials often skip, but it's critical if you want to deploy agents in production.
 
@@ -335,94 +356,165 @@ Create a `config.json` file:
 
 **Security note:** Never commit API keys to Git! Add `config.json` to your `.gitignore`.
 
-### Demo 1: A Simple ReAct Agent
+### Demo 1: A Simple ReAct Agent with Real-World Use Case
 
-Let's start with the basics: a ReAct agent with two tools (a retriever and a calculator).
+Let's build a practical agent that helps answer insurance policy questions. We'll use:
+- A **search tool** to find relevant policy documents
+- A **calculator tool** for safe arithmetic (no `eval()` risks!)
+
+First, let's set up our tools and tiny policy corpus:
 
 ```python
-# demo_1_react_agent.py
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain.tools import Tool
-from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+import json, os, re, ast, operator
 
-# Define tools
-def calculator(expression: str) -> str:
-    """Evaluates a mathematical expression."""
-    try:
-        return str(eval(expression))
-    except Exception as e:
-        return f"Error: {e}"
-
-def retriever(query: str) -> str:
-    """Retrieves information (mock implementation)."""
-    # In a real system, this would query a database or search engine
-    knowledge = {
-        "france population": "67 million",
-        "france gdp": "2.9 trillion USD",
-        "germany population": "83 million",
-        "germany gdp": "4.3 trillion USD"
-    }
-    return knowledge.get(query.lower(), "Information not found")
-
-tools = [
-    Tool(name="Calculator", func=calculator, description="Use for math calculations"),
-    Tool(name="Retriever", func=retriever, description="Use to get factual information")
+# Tiny policy corpus
+POLICIES = [
+    {"id": "TravelPlus-2024", "text": "TravelPlus provides coverage for business travel including delayed flights, lost baggage, and emergency medical expenses up to CHF 10,000. Personal electronics are covered if they are lost due to theft, with a deductible of CHF 200. Pure misplacement is not covered."},
+    {"id": "DeviceCare-Pro", "text": "DeviceCare-Pro covers accidental damage to smartphones and laptops used for work. Loss or theft is covered only when a police report is filed within 48 hours. Maximum payout CHF 1,500 per device, 2 incidents per policy year."},
+    {"id": "FleetAssist", "text": "FleetAssist covers rented vehicles during company travel. It excludes personal property inside the vehicle unless explicitly endorsed."},
 ]
 
-# Create agent
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
-agent = create_react_agent(llm, tools, PromptTemplate.from_template(
-    "You are a helpful assistant. Use tools when necessary.\n\n{input}"
-))
+def simple_search(query: str, top_k: int = 3):
+    """Simple keyword-based search"""
+    terms = [t.lower() for t in re.findall(r"\w+", query)]
+    scored = []
+    for doc in POLICIES:
+        text = doc["text"].lower()
+        score = sum(text.count(t) for t in set(terms))
+        if score > 0:
+            scored.append((score, doc))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [doc for _, doc in scored[:top_k]]
 
-# Run
-executor = AgentExecutor(agent=agent, tools=tools, max_iterations=10, verbose=True)
-result = executor.invoke({"input": "What's the GDP per capita of France vs Germany?"})
-print(result["output"])
+def search_policies(query: str) -> str:
+    """Search policies and return JSON"""
+    hits = simple_search(query, top_k=3)
+    return json.dumps({"results": [{"id": h["id"], "snippet": h["text"][:280]} for h in hits]})
+
+# Safe calculator using AST (no eval!)
+OPS = {
+    ast.Add: operator.add, ast.Sub: operator.sub, 
+    ast.Mult: operator.mul, ast.Div: operator.truediv,
+    ast.Pow: operator.pow, ast.USub: operator.neg, 
+    ast.Mod: operator.mod, ast.FloorDiv: operator.floordiv
+}
+
+def _eval(node):
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        return node.value
+    if isinstance(node, ast.BinOp):
+        return OPS[type(node.op)](_eval(node.left), _eval(node.right))
+    if isinstance(node, ast.UnaryOp):
+        return OPS[type(node.op)](_eval(node.operand))
+    raise ValueError("Unsupported expression")
+
+def calculator(expression: str) -> str:
+    """Safe calculator - no code execution risks"""
+    try:
+        node = ast.parse(expression, mode='eval').body
+        return str(_eval(node))
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+Now let's create our ReAct agent:
+
+```python
+from langchain.tools import Tool
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import ChatOpenAI
+
+# Initialize LLM
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+
+# Define tools
+tools = [
+    Tool(
+        name="search_policies", 
+        func=search_policies, 
+        description="Search a tiny policy corpus. Returns JSON."
+    ),
+    Tool(
+        name="calculator", 
+        func=calculator, 
+        description="Evaluate arithmetic like '2*(1500-200)'. Returns a number as text."
+    )
+]
+
+# Build the agent (ReAct pattern)
+agent = initialize_agent(
+    tools=tools, 
+    llm=llm, 
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True, 
+    handle_parsing_errors=True
+)
+
+# Test questions
+demo_questions = [
+    "My work smartphone was stolen on a business trip. Is it covered, and what are the conditions?",
+    "If a laptop worth CHF 1,800 is accidentally damaged twice in a year under DeviceCare-Pro, what's the max total payout after any deductibles?",
+    "Does FleetAssist cover personal belongings inside a rental car?"
+]
+
+# Run the agent
+for question in demo_questions:
+    result = agent.invoke(question)
+    print(f"\nQ: {question}")
+    print(f"A: {result['output']}")
 ```
 
 **What's happening here?**
 
 1. The agent receives the question
-2. It reasons: "I need GDP and population data for both countries"
-3. It uses the Retriever tool four times
-4. It uses the Calculator tool twice for division
-5. It compares and formats the answer
+2. It reasons: "I need policy information about smartphone theft"
+3. It uses the `search_policies` tool to find relevant documents
+4. For the calculator question, it extracts the math expression and uses the `calculator` tool
+5. It combines the results and formats a clear answer
 
-**Run it and watch the magic!** (Well, not magic—just loops and tool calls, but still cool.)
+**Important:** Notice we're using AST parsing instead of `eval()` for the calculator. This prevents code injection attacks!
 
 ### Demo 2: Calling a LangFlow Flow
 
 Now let's integrate with LangFlow. Say you've built a complex flow visually in LangFlow and want to call it from your code.
 
-First, export your flow from LangFlow as JSON or get its REST API endpoint.
+First, get your flow ID from LangFlow and set up your API key. Here's how to call it:
 
 ```python
 # demo_2_langflow_integration.py
 import requests
 import json
 
-LANGFLOW_URL = "http://127.0.0.1:7860/api/v1/run/YOUR_FLOW_ID"
-LANGFLOW_API_KEY = "your-langflow-key"
+LANGFLOW_API_KEY = os.environ.get("LANGFLOW_API_KEY")
 
-def call_langflow(query: str) -> dict:
+def run_langflow(flow_id: str, user_input: str, base_url: str = "http://127.0.0.1:7860/api/v1"):
     """Calls a LangFlow flow via REST API."""
+    url = f"{base_url}/run/{flow_id}"
     payload = {
-        "input": query,
-        "tweaks": {}  # Optional: override flow parameters
+        "input_value": user_input,
+        "output_type": "chat",
+        "input_type": "chat"
     }
     headers = {
-        "Authorization": f"Bearer {LANGFLOW_API_KEY}",
-        "Content-Type": "application/json"
+        "x-api-key": LANGFLOW_API_KEY
     }
     
-    response = requests.post(LANGFLOW_URL, json=payload, headers=headers)
-    response.raise_for_status()
-    return response.json()
+    r = requests.post(url, json=payload, headers=headers, timeout=60)
+    r.raise_for_status()
+    data = r.json()
+    
+    try:
+        # Extract the message text from the nested response
+        return data["outputs"][0]["outputs"][0]["results"]["message"]["text"]
+    except Exception:
+        # If structure is different, return the full JSON
+        return json.dumps(data, indent=2)
 
-# Use it
-result = call_langflow("Summarize the latest AI news")
+# Example usage
+result = run_langflow(
+    "55e5414b-966a-48dc-8bc4-bfb2e3168c72",
+    "Hello from the notebook! Tell me what I can do with this integration between LangChain and LangFlow"
+)
 print(result)
 ```
 
@@ -432,41 +524,97 @@ Your non-technical team can design flows visually in LangFlow, and your engineer
 
 ### Demo 3: Securing Tools with MCP
 
-Finally, let's add MCP for secure tool access.
+Finally, let's add MCP for secure tool access. Here's a real MCP server using FastMCP with proper security guardrails:
 
 ```python
-# demo_3_mcp_secure_tools.py
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain.tools import Tool
-from langchain_openai import ChatOpenAI
-import requests
+# safe_mcp_server.py
+from __future__ import annotations
+from mcp.server.fastmcp import FastMCP
+import re, ast, operator, json
 
-# Connect to MCP server
-MCP_SERVER = "http://localhost:8080"
+# Safe calculator implementation (same as before)
+OPS = {
+    ast.Add: operator.add, ast.Sub: operator.sub,
+    ast.Mult: operator.mul, ast.Div: operator.truediv,
+    ast.Pow: operator.pow, ast.USub: operator.neg,
+    ast.Mod: operator.mod, ast.FloorDiv: operator.floordiv
+}
 
-def call_mcp_tool(tool_name: str, **kwargs) -> str:
-    """Calls a tool through the MCP server."""
-    response = requests.post(
-        f"{MCP_SERVER}/tools/{tool_name}",
-        json=kwargs,
-        headers={"Authorization": "Bearer YOUR_MCP_TOKEN"}
-    )
-    response.raise_for_status()
-    return response.json()["result"]
+def _eval(node):
+    if isinstance(node, ast.Constant): return node.value
+    if isinstance(node, ast.BinOp): 
+        return OPS[type(node.op)](_eval(node.left), _eval(node.right))
+    if isinstance(node, ast.UnaryOp): 
+        return OPS[type(node.op)](_eval(node.operand))
+    raise ValueError("Unsupported expression")
 
-# Wrap MCP tools
-calculator_tool = Tool(
-    name="Calculator",
-    func=lambda expr: call_mcp_tool("calculator", expression=expr),
-    description="Safe calculator via MCP"
-)
+def safe_calculator(expression: str) -> str:
+    node = ast.parse(expression, mode='eval').body
+    return str(_eval(node))
 
-# Now the agent can't directly execute arbitrary code!
+# Policy corpus (same as before)
+POLICIES = [
+    {"id": "TravelPlus-2024", "text": "TravelPlus provides coverage for business travel including delayed flights, lost baggage, and emergency medical expenses up to CHF 10,000. Personal electronics are covered if they are lost due to theft, with a deductible of CHF 200. Pure misplacement is not covered."},
+    {"id": "DeviceCare-Pro", "text": "DeviceCare-Pro covers accidental damage to smartphones and laptops used for work. Loss or theft is covered only when a police report is filed within 48 hours. Maximum payout CHF 1,500 per device, 2 incidents per policy year."},
+    {"id": "FleetAssist", "text": "FleetAssist covers rented vehicles during company travel. It excludes personal property inside the vehicle unless explicitly endorsed."},
+]
+
+def simple_search(query: str, top_k: int = 3):
+    terms = [t.lower() for t in re.findall(r"\w+", query)]
+    scored = []
+    for doc in POLICIES:
+        text = doc["text"].lower()
+        score = sum(text.count(t) for t in set(terms))
+        if score > 0:
+            scored.append((score, doc))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [doc for _, doc in scored[:top_k]]
+
+# Initialize MCP server
+mcp = FastMCP("SR-Policies", stateless_http=True, host="127.0.0.1", port=3001)
+
+# Security constraints
+MAX_Q = 200  # Max query length
+BANNED = re.compile(r"(?i)(rm\s|-rf|\bimport\b|__|eval\(|exec\()")  # Block dangerous patterns
+
+@mcp.tool()
+def secure_search_policies(query: str) -> dict:
+    """Search policies with input validation"""
+    if not query or len(query) > MAX_Q or BANNED.search(query or ""):
+        return {"error": "query_rejected"}
+    hits = simple_search(query, top_k=3)
+    return {"results": [{"id": h["id"], "snippet": h["text"][:280]} for h in hits]}
+
+@mcp.tool()
+def safe_calc(expression: str) -> str:
+    """Safe calculator with input validation"""
+    if len(expression or "") > 100 or BANNED.search(expression or ""):
+        return "error: expression_rejected"
+    try:
+        return safe_calculator(expression)
+    except Exception as e:
+        return f"error: {e}"
+
+if __name__ == "__main__":
+    mcp.run(transport="streamable-http")
 ```
 
 **What's different here?**
 
+1. **Input validation**: We check query length and ban dangerous patterns like `import`, `eval()`, `exec()`
+2. **Sandboxed execution**: The calculator uses AST parsing—no arbitrary code execution
+3. **Observable**: All tool calls go through the MCP server and can be logged
+4. **Stateless HTTP**: Tools are exposed via HTTP, making them accessible to any agent
+
 Instead of the agent executing code directly on your machine, it goes through the MCP server. The server validates inputs, logs all calls, and enforces access controls.
+
+**Running the server:**
+
+```bash
+python safe_mcp_server.py
+```
+
+Now your agent can connect to `http://127.0.0.1:3001` and use these tools safely!
 
 ## Prompt Engineering: The Secret Sauce
 
@@ -711,7 +859,7 @@ When an LLM generates plausible-sounding but false information. Agents can hallu
 
 **Questions? Found a bug? Have a suggestion?** 
 
-🦋 Give me your feedback on Bluesky: [bsky.dev](https://bsky.app/profile/ai4you-sh.bsky.social)
+🦋 Give me your feedback on Bluesky: [bsky.app](https://bsky.app/profile/ai4you-sh.bsky.social)
 Give me your feedback on X: [x.com](https://x.com/ai4you_sh)
  or reach out on [GitHub](https://github.com/zioalex/Agents_unplugged_for_real_no_magic_no_fuss)!
 

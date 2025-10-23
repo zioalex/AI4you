@@ -1,0 +1,6 @@
+{% if page.complexity %}
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-signal" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].complexity_label | default: "Complexity:" }} </strong>
+    <span itemprop="complexity" class="complexity-{{ page.complexity | downcase }}">{{ page.complexity | capitalize }}</span>
+  </p>
+{% endif %}
