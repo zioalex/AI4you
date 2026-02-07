@@ -110,7 +110,7 @@ Technology is just a tool. The "why" behind this project — the empathy for peo
 For those interested in the nuts and bolts:
 - **Frontend:** Clean HTML/CSS/JavaScript interface
 - **Backend:** Simple API handling chat interactions  
-- **Hosting:** Deployed on Azure, Openroute any existing blog at ai4you.sh
+- **Hosting:** Deployed on Azure, Openrouter and my existing blog at ai4you.sh
 - **Source Control:** GitHub with automated deployment via GitHub Actions
 
 The entire codebase is [open source on GitHub](https://github.com/zioalex/getinspiredbythebible) if you want to see how it's built, suggest improvements, or fork it for your own purposes.
