@@ -39,7 +39,7 @@ Enter **Claude Code**.
 
 The interface is clean and straightforward:
 - Share what's on your heart
-- Ask questions about Scripture  
+- Ask questions about Scripture
 - Seek encouragement for whatever you're facing
 - Explore theological topics (with appropriate caveats that it's not a substitute for trained theologians)
 
