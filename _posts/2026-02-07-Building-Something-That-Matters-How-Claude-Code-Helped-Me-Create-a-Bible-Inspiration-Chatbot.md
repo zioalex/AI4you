@@ -5,7 +5,7 @@ author: Alessandro S.
 tags: [AI, Chatbots, Claude Code, Mental Health, Scripture, Solo Development]
 categories: posts
 description: "Discover how I used Claude Code to rapidly build a Bible inspiration chatbot aimed at providing encouragement and comfort during tough times. This article shares my journey, the challenges faced, and the lessons learned in creating something meaningful with AI assistance."
-featured_image: "/assets/images/agentic_frameworks_wordcloud.png"
+featured_image: "/assets/images/bible-chatbot/bible-chatbot-teaser-225x225.png"
 #video_url: "https://www.youtube.com/@AI4You-cj8mu"
 estimated_reading_time: "8 minutes"
 target_audience: "Anyone curious about AI-assisted development and making a positive impact"
