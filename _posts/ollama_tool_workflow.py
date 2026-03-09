@@ -43,14 +43,16 @@ while True:
     if msg.get("tool_calls"):
         for call in msg["tool_calls"]:
             if call["function"]["name"] == "ipython":
-                # grab the code string
-                args = json.loads(call["function"]["arguments"])
+                # grab the code string — newer SDK returns a dict, older a JSON string
+                args = call["function"]["arguments"]
+                if isinstance(args, str):
+                    args = json.loads(args)
                 code = args["content"]
 
                 # execute it safely (here, simple subprocess demo)
                 try:
                     out = subprocess.check_output(
-                        ["python", "-c", code],
+                        ["python3", "-c", code],
                         stderr=subprocess.STDOUT,
                         text=True,
                         timeout=10
