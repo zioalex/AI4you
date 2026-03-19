@@ -37,3 +37,6 @@ ehthumbs.db
 Thumbs.db
 _site/**
 Gemfile.lock
+
+# GHCLI TEST
+.github/hooks/logs/
